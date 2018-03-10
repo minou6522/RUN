@@ -16,7 +16,7 @@
 
 var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d"),
-    width = 2000,
+    width = 1900,
     height = 940,
     player = {
       x : width/2,
@@ -43,7 +43,21 @@ canvas.height = height;
 	  
 	  
     };
-function isOverlapping(player, obstacle){
+
+	
+	
+	//return  pleft>=oleft &&
+	//		pleft<=oright &&
+		//	pleft>=otop } // !(pleft>oright ||
+	// oleft>pright ||
+	// pbot>otop ||
+	// obot>ptop 
+
+	
+	
+
+function update(){
+
 	pleft = player.x
 	pright = player.x + player.width
 	ptop = player.y - player.height
@@ -53,20 +67,6 @@ function isOverlapping(player, obstacle){
 	otop = obstacle.y - obstacle.height
 	obot = obstacle.y;
 	
-	return  if(pleft>=oleft &&
-			pleft<=oright &&
-			pleft>=otop) } // !(pleft>oright ||
-	// oleft>pright ||
-	// pbot>otop ||
-	// obot>ptop 
-)
-	
-	
-
-function update(){
-if (isOverlapping(player, obstacle)){
-
-}
 
 		// check keys
    if (keys[38]) {
@@ -74,9 +74,14 @@ if (isOverlapping(player, obstacle)){
    }
    if (keys[39]){
        // right arrow
+	   if (ptop == otop){
+		if (pright >= oleft && pleft <= oright){
+		player.velX=0 
+		console.log("hi")}}
        if (player.velX < player.speed) {                         
            player.velX++;                  
-       }          
+       }  
+ 
    }          
    if (keys[37]) {                 
         // left arrow                  
@@ -140,4 +145,5 @@ document.body.addEventListener("keyup", function(e) {
 </script>
 </body>
 </html>
+
 
